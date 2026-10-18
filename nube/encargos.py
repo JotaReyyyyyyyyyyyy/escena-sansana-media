@@ -204,6 +204,20 @@ def publicar_aprobada(t):
 
 def main():
     disponible = bool(os.environ.get('CLAUDE_CODE_OAUTH_TOKEN'))
+    if '--probar-sesion' in sys.argv:
+        with tempfile.TemporaryDirectory(prefix='flopa-conexion-') as tmp:
+            r = subprocess.run(['claude', '-p', 'Responde únicamente CONECTADO.', '--model', 'sonnet',
+                '--tools', '', '--max-turns', '1', '--output-format', 'json', '--no-session-persistence',
+                '--setting-sources', '', '--strict-mcp-config', '--mcp-config', '{"mcpServers":{}}'],
+                cwd=tmp, env=entorno_claude(Path(tmp)), capture_output=True, text=True, timeout=120)
+            try:
+                d=json.loads(r.stdout)
+                disponible = r.returncode == 0 and not d.get('is_error') and 'CONECTADO' in d.get('result','')
+            except Exception:
+                disponible = False
+        api('motor', {'claude_disponible': disponible})
+        print('Conexión real de la suscripción: ' + ('correcta' if disponible else 'no disponible'))
+        raise SystemExit(0 if disponible else 1)
     api('motor', {'claude_disponible': disponible})
     hay = api('pendientes')['hay']
     if len(sys.argv) > 1 and sys.argv[1] == '--sondear':
