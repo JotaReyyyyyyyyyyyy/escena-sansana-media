@@ -53,10 +53,18 @@ jobs:
         run: |
           pip install pillow==11.3.0 playwright==1.55.0
           python -m playwright install --with-deps chromium
-      - name: Ejecutar una etapa del encargo privado
+      # IG_TOKEN y la sesión de Claude nunca comparten paso: esta etapa reserva el
+      # encargo y publica solo lo ya aprobado, sin ejecutar Claude.
+      - name: Reservar el encargo y publicar lo aprobado
+        id: reserva
         if: steps.sondeo.outputs.trabajo == 'true' && inputs.probar_sesion != true
         env:
           FLOPA_KEY: ${{ secrets.FLOPA_KEY }}
-          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
-        run: python nube/encargos.py
+        run: python nube/encargos.py --reclamar
+      - name: Preparar la vista previa con Claude
+        if: steps.reserva.outputs.preparar == 'true'
+        env:
+          FLOPA_KEY: ${{ secrets.FLOPA_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: python nube/encargos.py --preparar

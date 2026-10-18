@@ -2,6 +2,12 @@
 
 Los pedidos y borradores no se escriben en Git. Claude usa la suscripción OAuth;
 su proceso no recibe IG_TOKEN, FLOPA_KEY ni credenciales de GitHub.
+
+Cada ejecución tiene dos etapas en pasos separados del workflow:
+    --reclamar   con IG_TOKEN y sin sesión de Claude: reserva el encargo, publica
+                 solo si ya está aprobado y, si no, lo deja en el traspaso.
+    --preparar   con la sesión de Claude y sin IG_TOKEN: arma la vista previa.
+Así ningún proceso vecino de Claude puede leer la credencial de Instagram.
 """
 import base64
 import io
@@ -17,6 +23,7 @@ from pathlib import Path
 
 BASE = 'https://pablojuan-bot.joagivg-tapiens.workers.dev'
 RAIZ = Path(__file__).resolve().parent
+TRASPASO = 'encargo-traspaso.json'
 SCHEMA = {
     'type': 'object', 'additionalProperties': False,
     'properties': {
@@ -202,6 +209,83 @@ def publicar_aprobada(t):
     resultado(t, 'resultado', resultado={'id': mid, 'publicado': True})
 
 
+def traspaso():
+    return Path(os.environ.get('RUNNER_TEMP') or tempfile.gettempdir()) / TRASPASO
+
+
+def salida(clave, valor):
+    if os.environ.get('GITHUB_OUTPUT'):
+        with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+            f.write(clave + '=' + valor + '\n')
+
+
+def con_latido(t, etapa):
+    detener = threading.Event()
+
+    def latir():
+        while not detener.wait(30):
+            try:
+                resultado(t, 'latido')
+            except Exception:
+                pass
+
+    hilo = threading.Thread(target=latir, daemon=True)
+    hilo.start()
+    try:
+        etapa(t)
+        print('Etapa del encargo completada; detalles solo en el chat privado.')
+    except Exception:
+        # Ni las excepciones de Meta ni las del CLI se imprimen en logs públicos.
+        detalle = ('La publicación quedó en revisión; comprobaré su resultado antes de repetirla.' if t['estado'] == 'publicando'
+                   else 'No pude terminar esta pieza. Revisa mi sesión de Claude o vuelve a encargarla con /crear.')
+        try:
+            resultado(t, 'error', detalle=detalle)
+        except Exception:
+            pass
+        print('La etapa no se pudo confirmar; no se reintentó la publicación.')
+        raise SystemExit(1)
+    finally:
+        detener.set()
+        hilo.join(timeout=3)
+
+
+def reclamar():
+    # Esta etapa nunca ejecuta Claude: es la única que recibe IG_TOKEN.
+    if os.environ.get('CLAUDE_CODE_OAUTH_TOKEN'):
+        sys.exit('La etapa que publica no debe recibir la sesión de Claude.')
+    t = api('reclamar')['encargo']
+    if not t:
+        print('Sin encargos pendientes.')
+        return
+    if t['estado'] == 'publicando':
+        con_latido(t, publicar_aprobada)
+        return
+    f = traspaso()
+    f.unlink(missing_ok=True)
+    fd = os.open(f, os.O_WRONLY | os.O_CREAT | os.O_EXCL, 0o600)
+    with os.fdopen(fd, 'w', encoding='utf-8') as g:
+        json.dump(t, g, ensure_ascii=False)
+    salida('preparar', 'true')
+    print('Encargo reservado para prepararlo en la etapa de Claude.')
+
+
+def preparar_reservado():
+    if os.environ.get('IG_TOKEN'):
+        sys.exit('La etapa de Claude no debe recibir IG_TOKEN.')
+    if not os.environ.get('CLAUDE_CODE_OAUTH_TOKEN'):
+        print('Falta conectar la suscripción de Claude; no se ejecutó ningún encargo.')
+        return
+    f = traspaso()
+    if not f.is_file():
+        print('Sin encargos reservados.')
+        return
+    t = json.loads(f.read_text(encoding='utf-8'))
+    f.unlink()
+    if t.get('estado') == 'publicando':
+        raise SystemExit('Un encargo aprobado no se publica desde la etapa de Claude.')
+    con_latido(t, preparar)
+
+
 def main():
     disponible = bool(os.environ.get('CLAUDE_CODE_OAUTH_TOKEN'))
     if '--probar-sesion' in sys.argv:
@@ -218,51 +302,17 @@ def main():
         api('motor', {'claude_disponible': disponible})
         print('Conexión real de la suscripción: ' + ('correcta' if disponible else 'no disponible'))
         raise SystemExit(0 if disponible else 1)
-    api('motor', {'claude_disponible': disponible})
-    hay = api('pendientes')['hay']
-    if len(sys.argv) > 1 and sys.argv[1] == '--sondear':
-        if os.environ.get('GITHUB_OUTPUT'):
-            with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
-                f.write('trabajo=' + str(disponible and hay).lower() + '\n')
+    if '--sondear' in sys.argv:
+        api('motor', {'claude_disponible': disponible})
+        hay = api('pendientes')['hay']
+        salida('trabajo', str(disponible and hay).lower())
         print('Motor con sesión de suscripción: ' + str(disponible) + '; encargos pendientes: ' + str(hay))
-        return
-    if not disponible:
-        print('Falta conectar la suscripción de Claude; no se ejecutó ningún encargo.')
-        return
-    t = api('reclamar')['encargo']
-    if not t:
-        print('Sin encargos pendientes.')
-        return
-    detener = threading.Event()
-
-    def latir():
-        while not detener.wait(30):
-            try:
-                resultado(t, 'latido')
-            except Exception:
-                pass
-
-    hilo = threading.Thread(target=latir, daemon=True)
-    hilo.start()
-    try:
-        if t['estado'] == 'publicando':
-            publicar_aprobada(t)
-        else:
-            preparar(t)
-        print('Etapa del encargo completada; detalles solo en el chat privado.')
-    except Exception:
-        # Ni las excepciones de Meta ni las del CLI se imprimen en logs públicos.
-        detalle = ('La publicación quedó en revisión; comprobaré su resultado antes de repetirla.' if t['estado'] == 'publicando'
-                   else 'No pude terminar esta pieza. Revisa mi sesión de Claude o vuelve a encargarla con /crear.')
-        try:
-            resultado(t, 'error', detalle=detalle)
-        except Exception:
-            pass
-        print('La etapa no se pudo confirmar; no se reintentó la publicación.')
-        raise SystemExit(1)
-    finally:
-        detener.set()
-        hilo.join(timeout=3)
+    elif '--reclamar' in sys.argv:
+        reclamar()
+    elif '--preparar' in sys.argv:
+        preparar_reservado()
+    else:
+        sys.exit('Uso: encargos.py --sondear | --reclamar | --preparar | --probar-sesion')
 
 
 if __name__ == '__main__':
