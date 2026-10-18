@@ -35,6 +35,8 @@ jobs:
             echo "::error::Falta IG_TOKEN."
             exit 1
           fi
+          # Verificar el permiso vigente antes de pedir un token nuevo a Instagram.
+          gh api "repos/$GITHUB_REPOSITORY/actions/secrets/public-key" > /dev/null
           trap 'rm -f "$RUNNER_TEMP/t"' EXIT
           umask 077
           python nube/renovar.py "$RUNNER_TEMP/t" "$RUNNER_TEMP/renovacion.json"

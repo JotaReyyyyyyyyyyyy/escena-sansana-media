@@ -33,7 +33,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Comprobar horario, reserva y exclusion de historias manuales
-        run: python -m unittest discover -s nube -p test_publicar.py
+        run: python -m unittest discover -s nube -p 'test_*.py'
       - name: Publicar lo que toca
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
