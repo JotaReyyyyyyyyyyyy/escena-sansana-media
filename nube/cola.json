@@ -92,153 +92,204 @@
  {
   "id": "historia-gracias",
   "hora": "2026-10-20 19:00",
-  "tipo": "historia",
+  "tipo": "historia-musica",
   "pieza": "Historia · Gracias",
   "texto": "",
   "colaboradores": [],
-  "estado": "manual",
-  "musica": false,
+  "estado": "espera",
+  "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
   ],
-  "archivos": [],
+  "archivos": [
+   "01.png"
+  ],
   "archivo_manual": "historia-gracias.png",
-  "musica_en_app": true,
-  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
   "cancion": "Kala Marka – Rosa",
-  "cancion_link": "https://youtu.be/qtb_XOcbPxc"
+  "cancion_link": "https://youtu.be/qtb_XOcbPxc",
+  "cancion_buscar": "Rosa Kala Marka",
+  "cancion_artista": "kala marka",
+  "cancion_titulo": "rosa"
  },
  {
   "id": "historia-pase",
   "hora": "2026-10-22 19:00",
-  "tipo": "historia",
+  "tipo": "historia-musica",
   "pieza": "Historia · Pase al equipo (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
-  "estado": "manual",
-  "musica": false,
+  "estado": "espera",
+  "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
   ],
-  "archivos": [],
+  "archivos": [
+   "01.png"
+  ],
   "archivo_manual": "historia-pase.png",
-  "musica_en_app": true,
-  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
   "cancion": "Kala Marka – El Jaguar",
-  "cancion_link": "https://youtu.be/hjofHGQVYi8"
+  "cancion_link": "https://youtu.be/hjofHGQVYi8",
+  "cancion_buscar": "Jaguar Kala Marka",
+  "cancion_artista": "kala marka",
+  "cancion_titulo": "jaguar"
  },
  {
   "id": "historia-felicidad",
   "hora": "2026-10-24 19:00",
-  "tipo": "historia",
+  "tipo": "historia-musica",
   "pieza": "Historia · Felicidad",
   "texto": "",
   "colaboradores": [],
-  "estado": "manual",
-  "musica": false,
+  "estado": "espera",
+  "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
   ],
-  "archivos": [],
+  "archivos": [
+   "01.png"
+  ],
   "archivo_manual": "historia-felicidad.png",
-  "musica_en_app": true,
-  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
   "cancion": "Luis Lambis – Ya te olvidé",
-  "cancion_link": "https://youtu.be/trDmovZuoSs"
+  "cancion_link": "https://youtu.be/trDmovZuoSs",
+  "cancion_buscar": "Ya te olvidé Luis Lambis",
+  "cancion_artista": "lambis",
+  "cancion_titulo": "olvid"
  },
  {
   "id": "historia-lugar",
   "hora": "2026-10-26 19:00",
-  "tipo": "historia",
+  "tipo": "historia-musica",
   "pieza": "Historia · Te guardamos un lugar (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
-  "estado": "manual",
-  "musica": false,
+  "estado": "espera",
+  "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
   ],
-  "archivos": [],
+  "archivos": [
+   "01.png"
+  ],
   "archivo_manual": "historia-lugar.png",
-  "musica_en_app": true,
-  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
   "cancion": "Los Hijos del Sol – Cariñito",
-  "cancion_link": "https://youtu.be/68fYR40ULPs"
+  "cancion_link": "https://youtu.be/68fYR40ULPs",
+  "cancion_buscar": "Cariñito Los Hijos del Sol",
+  "cancion_artista": "hijos del sol",
+  "cancion_titulo": "cari"
  },
  {
   "id": "historia-arte",
   "hora": "2026-10-28 19:00",
-  "tipo": "historia",
+  "tipo": "historia-musica",
   "pieza": "Historia · Arte",
   "texto": "",
   "colaboradores": [],
-  "estado": "manual",
-  "musica": false,
+  "estado": "espera",
+  "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
   ],
-  "archivos": [],
+  "archivos": [
+   "01.png"
+  ],
   "archivo_manual": "historia-arte.png",
-  "musica_en_app": true,
-  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
   "cancion": "Kala Marka – Es así",
-  "cancion_link": "https://youtu.be/Hz1-ar8VZYY"
+  "cancion_link": "https://youtu.be/Hz1-ar8VZYY",
+  "cancion_buscar": "Es así Kala Marka",
+  "cancion_artista": "kala marka",
+  "cancion_titulo": "es as"
  },
  {
   "id": "historia-tesumas",
   "hora": "2026-10-30 19:00",
-  "tipo": "historia",
+  "tipo": "historia-musica",
   "pieza": "Historia · ¿Te sumas? (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
-  "estado": "manual",
-  "musica": false,
+  "estado": "espera",
+  "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
   ],
-  "archivos": [],
+  "archivos": [
+   "01.png"
+  ],
   "archivo_manual": "historia-tesumas.png",
-  "musica_en_app": true,
-  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
   "cancion": "Aullagas – Tobas Calero",
-  "cancion_link": "https://youtu.be/7Jattcv4z0Y"
+  "cancion_link": "https://youtu.be/7Jattcv4z0Y",
+  "cancion_buscar": "Tobas Calero Aullagas",
+  "cancion_artista": "aullagas",
+  "cancion_titulo": "calero"
  },
  {
   "id": "historia-ritmo",
   "hora": "2026-11-01 19:00",
-  "tipo": "historia",
+  "tipo": "historia-musica",
   "pieza": "Historia · Ritmo",
   "texto": "",
   "colaboradores": [],
-  "estado": "manual",
-  "musica": false,
+  "estado": "espera",
+  "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
   ],
-  "archivos": [],
+  "archivos": [
+   "01.png"
+  ],
   "archivo_manual": "historia-ritmo.png",
-  "musica_en_app": true,
-  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
   "cancion": "Tupay – Soy Caporal",
-  "cancion_link": "https://youtu.be/KY0_vMk2BX0"
+  "cancion_link": "https://youtu.be/KY0_vMk2BX0",
+  "cancion_buscar": "Soy Caporal Tupay",
+  "cancion_artista": "tupay",
+  "cancion_titulo": "caporal"
  },
  {
   "id": "historia-cultura",
   "hora": "2026-11-03 19:00",
-  "tipo": "historia",
+  "tipo": "historia-musica",
   "pieza": "Historia · ¡Cultura viva!",
   "texto": "",
   "colaboradores": [],
-  "estado": "manual",
-  "musica": false,
+  "estado": "espera",
+  "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
   ],
-  "archivos": [],
+  "archivos": [
+   "01.png"
+  ],
   "archivo_manual": "historia-cultura.png",
-  "musica_en_app": true,
-  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
   "cancion": "Kala Marka – Ama Amazonas",
-  "cancion_link": "https://youtu.be/v5eNzBUmkjM"
+  "cancion_link": "https://youtu.be/v5eNzBUmkjM",
+  "cancion_buscar": "Amazonas Kala Marka",
+  "cancion_artista": "kala marka",
+  "cancion_titulo": "amazonas"
+ },
+ {
+  "id": "historia-sumate-musica",
+  "hora": "2026-10-18 20:00",
+  "tipo": "historia-musica",
+  "pieza": "Historia · Súmate (QR grupo WhatsApp) con música",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.png"
+  ],
+  "musica": true,
+  "cancion": "Llajtaymanta – El Chiru Chiru",
+  "cancion_link": "https://youtu.be/xsgnY8oCkcU",
+  "cancion_buscar": "El Chiru Chiru Llajtaymanta",
+  "cancion_artista": "llajtaymanta",
+  "cancion_titulo": "chiru",
+  "estado": "espera",
+  "nota": "Reemplaza la Súmate sin música (Joaquín la borró el 18-10). Primera prueba desde la nube."
  }
 ]

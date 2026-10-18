@@ -112,14 +112,25 @@ def lanzar(cid):
     return {"id": mid, "link": link, "publicado": True}
 
 
+def tipo_aviso(p):
+    return "historia" if p["tipo"] == "historia-musica" else p["tipo"]
+
+
 def publicar(p):
-    def confirmar(cid):
-        resultado = lanzar(cid)
+    def anotar(resultado):
         if resultado.get('publicado') is True:
             # También conservar éxitos parciales si falla otra historia del lote.
             p.setdefault('resultados', []).append(resultado)
-            resultado['aviso_pendiente'] = not avisar_publicacion(p['tipo'], resultado)
+            resultado['aviso_pendiente'] = not avisar_publicacion(tipo_aviso(p), resultado)
         return resultado
+
+    def confirmar(cid):
+        return anotar(lanzar(cid))
+
+    if p["tipo"] == "historia-musica":
+        # Historia con canción del catálogo: va por la API privada (nube/musica_privada.py).
+        from musica_privada import publicar_historia
+        return [anotar(publicar_historia(p, RAIZ / "media" / p["id"] / a, PRUEBA)) for a in p["archivos"]]
 
     urls = [RAW + f"{p['id']}/{a}" for a in p["archivos"]]
     portada = RAW + f"{p['id']}/{p['portada']}" if p.get("portada") else None
@@ -143,7 +154,7 @@ def recuperar_avisos(cola):
     cambio = False
     for p in cola:
         for resultado in p.get('resultados', []):
-            if resultado.get('aviso_pendiente') and avisar_publicacion(p['tipo'], resultado):
+            if resultado.get('aviso_pendiente') and avisar_publicacion(tipo_aviso(p), resultado):
                 resultado['aviso_pendiente'] = False
                 cambio = True
     if cambio:
