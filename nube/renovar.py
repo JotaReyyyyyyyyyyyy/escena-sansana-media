@@ -11,11 +11,13 @@ import os
 import sys
 import urllib.parse
 import urllib.request
+from flopa import actividad
 
-url = "https://graph.instagram.com/refresh_access_token?" + urllib.parse.urlencode(
-    {"grant_type": "ig_refresh_token", "access_token": os.environ["IG_TOKEN"].strip()})
-with urllib.request.urlopen(url, timeout=60) as r:
-    res = json.loads(r.read())
-with open(sys.argv[1], "w", encoding="utf-8") as f:
-    f.write(res["access_token"].strip())
-print(f"Token renovado por {int(res.get('expires_in', 5184000)) // 86400} dias")
+with actividad('Renovando la conexión de Instagram de Escena Sansana', 'Renovó la conexión de Instagram'):
+    url = "https://graph.instagram.com/refresh_access_token?" + urllib.parse.urlencode(
+        {"grant_type": "ig_refresh_token", "access_token": os.environ["IG_TOKEN"].strip()})
+    with urllib.request.urlopen(url, timeout=60) as r:
+        res = json.loads(r.read())
+    with open(sys.argv[1], "w", encoding="utf-8") as f:
+        f.write(res["access_token"].strip())
+    print(f"Token renovado por {int(res.get('expires_in', 5184000)) // 86400} dias")

@@ -16,6 +16,7 @@ jobs:
       - name: Renovar y guardar
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          FLOPA_KEY: ${{ secrets.FLOPA_KEY }}
           GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           python nube/renovar.py "$RUNNER_TEMP/t"
