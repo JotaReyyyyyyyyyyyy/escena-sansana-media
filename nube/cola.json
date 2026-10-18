@@ -289,8 +289,21 @@
   "cancion_buscar": "El Chiru Chiru Llajtaymanta",
   "cancion_artista": "llajtaymanta",
   "cancion_titulo": "chiru",
-  "estado": "publicando",
+  "estado": "publicada",
   "nota": "Reemplaza la Súmate sin música (Joaquín la borró el 18-10). Primera prueba desde la nube.",
-  "inicio": "2026-10-18T20:05:29.315316-03:00"
+  "inicio": "2026-10-18T20:05:29.315316-03:00",
+  "resultados": [
+   {
+    "id": "4010968797691018390",
+    "link": "https://www.instagram.com/stories/escena_sansana/4010968797691018390",
+    "publicado": true,
+    "cancion": "Chiru Chiru | el Ferroviario — Llajtaymanta",
+    "aviso_pendiente": false
+   }
+  ],
+  "publicada": "2026-10-18 20:06",
+  "links": [
+   "https://www.instagram.com/stories/escena_sansana/4010968797691018390"
+  ]
  }
 ]
