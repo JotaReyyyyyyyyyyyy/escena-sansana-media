@@ -4,11 +4,15 @@ name: Publicar en Instagram
 # Todo lo que esta en la cola fue aprobado por Joaquin en el chat.
 on:
   schedule:
-    - cron: "7,17,27,37,47,57 * * * *"
+    - cron: "3,13,23,33,43,53 * * * *"
   workflow_dispatch:
     inputs:
       prueba:
         description: "Armar todo en Instagram sin publicar"
+        type: boolean
+        default: false
+      auditoria:
+        description: "Revisar horarios y estados sin llamar a Instagram ni modificar la cola"
         type: boolean
         default: false
 
@@ -33,4 +37,6 @@ jobs:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
           FLOPA_KEY: ${{ secrets.FLOPA_KEY }}
           PRUEBA: ${{ inputs.prueba }}
+          AUDITORIA: ${{ inputs.auditoria }}
+          EVENTO: ${{ github.event_name }}
         run: python nube/publicar.py

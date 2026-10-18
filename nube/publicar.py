@@ -142,15 +142,23 @@ def guardar(cola, mensaje):
         if subprocess.run(["git", "push"], cwd=RAIZ.parent).returncode == 0:
             return
         git("pull", "--rebase")
-    print("  ojo: no se pudo guardar el estado en el repo")
+    raise RuntimeError("No se pudo guardar el estado en el repo; requiere revision antes de reintentar")
 
 
 def main():
-    if not os.environ.get("IG_TOKEN"):
-        print("Todavia no esta el secreto IG_TOKEN (Settings > Secrets and variables > Actions). Nada que hacer.")
-        return
     cola = json.loads(COLA.read_text(encoding="utf-8"))
     ahora = dt.datetime.now(CHILE)
+    print(f"Revision: {ahora.isoformat()} America/Santiago; evento={os.environ.get('EVENTO', 'local')}")
+    print("Estados: " + json.dumps({s: sum(p.get('estado') == s for p in cola)
+                                    for s in sorted({p.get('estado', '?') for p in cola})}))
+    if os.environ.get("AUDITORIA", "").lower() == "true":
+        for p in cola:
+            if p.get("estado") == "pendiente":
+                print(f"Pendiente: {p['id']} -> {p['hora']} America/Santiago")
+        print("Auditoria: sin llamadas a Instagram ni cambios en la cola")
+        return
+    if not os.environ.get("IG_TOKEN"):
+        sys.exit("Falta el secreto IG_TOKEN; no se publico nada")
     hubo_error = False
     # "espera": aprobada pero aun la publica el PC. "solo-prueba": se arma solo en modo prueba.
     activos = ("pendiente", "solo-prueba") if PRUEBA else ("pendiente",)
@@ -165,6 +173,12 @@ def main():
             guardar(cola, f"Vencida: {p['id']}")
             continue
         print(f"== {p['id']} ({p['tipo']}, {p['hora']})")
+        if not PRUEBA:
+            # Reserva durable ANTES de llamar a Instagram. Una interrupcion deja
+            # publicando/revision fuera de los reintentos, nunca otra publicacion.
+            p["estado"] = "publicando"
+            p["inicio"] = ahora.isoformat()
+            guardar(cola, f"Reservar publicacion: {p['id']}")
         try:
             tarea = f"{'Probando' if PRUEBA else 'Publicando'} {p['tipo']}: {p.get('pieza', p['id'])}"
             terminado = 'Terminó una prueba sin publicar' if PRUEBA else f"Publicó {p['tipo']}: {p.get('pieza', p['id'])}"
@@ -176,8 +190,7 @@ def main():
             if not PRUEBA:
                 p["intentos"] = p.get("intentos", 0) + 1
                 p["nota"] = str(e)[:300]
-                if p["intentos"] >= 3:
-                    p["estado"] = "error"
+                p["estado"] = "revision"
                 guardar(cola, f"Error al publicar {p['id']}")
             continue
         print("  " + json.dumps(res, ensure_ascii=False))
@@ -186,6 +199,7 @@ def main():
         p["estado"] = "publicada"
         p["publicada"] = f"{dt.datetime.now(CHILE):%Y-%m-%d %H:%M}"
         p["links"] = [r.get("link") for r in res]
+        p["resultados"] = res
         guardar(cola, f"Publicada: {p['id']}")
     sys.exit(1 if hubo_error else 0)
 
