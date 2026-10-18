@@ -13,7 +13,7 @@ import urllib.parse
 import urllib.request
 
 url = "https://graph.instagram.com/refresh_access_token?" + urllib.parse.urlencode(
-    {"grant_type": "ig_refresh_token", "access_token": os.environ["IG_TOKEN"]})
+    {"grant_type": "ig_refresh_token", "access_token": os.environ["IG_TOKEN"].strip()})
 with urllib.request.urlopen(url, timeout=60) as r:
     res = json.loads(r.read())
 with open(sys.argv[1], "w", encoding="utf-8") as f:

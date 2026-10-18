@@ -38,7 +38,7 @@ PRUEBA = os.environ.get("PRUEBA", "").lower() == "true"
 
 
 def api(metodo, ruta, **params):
-    params["access_token"] = os.environ["IG_TOKEN"]
+    params["access_token"] = os.environ["IG_TOKEN"].strip()
     datos = urllib.parse.urlencode(params).encode()
     url = GRAPH + ruta
     for intento in range(6):
