@@ -96,7 +96,7 @@
   "pieza": "Historia · Gracias",
   "texto": "",
   "colaboradores": [],
-  "estado": "espera",
+  "estado": "pendiente",
   "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
@@ -105,7 +105,7 @@
    "01.png"
   ],
   "archivo_manual": "historia-gracias.png",
-  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py).",
   "cancion": "Kala Marka – Rosa",
   "cancion_link": "https://youtu.be/qtb_XOcbPxc",
   "cancion_buscar": "Rosa Kala Marka",
@@ -119,7 +119,7 @@
   "pieza": "Historia · Pase al equipo (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
-  "estado": "espera",
+  "estado": "pendiente",
   "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
@@ -128,7 +128,7 @@
    "01.png"
   ],
   "archivo_manual": "historia-pase.png",
-  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py).",
   "cancion": "Kala Marka – El Jaguar",
   "cancion_link": "https://youtu.be/hjofHGQVYi8",
   "cancion_buscar": "Jaguar Kala Marka",
@@ -142,7 +142,7 @@
   "pieza": "Historia · Felicidad",
   "texto": "",
   "colaboradores": [],
-  "estado": "espera",
+  "estado": "pendiente",
   "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
@@ -151,7 +151,7 @@
    "01.png"
   ],
   "archivo_manual": "historia-felicidad.png",
-  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py).",
   "cancion": "Luis Lambis – Ya te olvidé",
   "cancion_link": "https://youtu.be/trDmovZuoSs",
   "cancion_buscar": "Ya te olvidé Luis Lambis",
@@ -165,7 +165,7 @@
   "pieza": "Historia · Te guardamos un lugar (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
-  "estado": "espera",
+  "estado": "pendiente",
   "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
@@ -174,7 +174,7 @@
    "01.png"
   ],
   "archivo_manual": "historia-lugar.png",
-  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py).",
   "cancion": "Los Hijos del Sol – Cariñito",
   "cancion_link": "https://youtu.be/68fYR40ULPs",
   "cancion_buscar": "Cariñito Los Hijos del Sol",
@@ -188,7 +188,7 @@
   "pieza": "Historia · Arte",
   "texto": "",
   "colaboradores": [],
-  "estado": "espera",
+  "estado": "pendiente",
   "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
@@ -197,7 +197,7 @@
    "01.png"
   ],
   "archivo_manual": "historia-arte.png",
-  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py).",
   "cancion": "Kala Marka – Es así",
   "cancion_link": "https://youtu.be/Hz1-ar8VZYY",
   "cancion_buscar": "Es así Kala Marka",
@@ -211,7 +211,7 @@
   "pieza": "Historia · ¿Te sumas? (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
-  "estado": "espera",
+  "estado": "pendiente",
   "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
@@ -220,7 +220,7 @@
    "01.png"
   ],
   "archivo_manual": "historia-tesumas.png",
-  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py).",
   "cancion": "Aullagas – Tobas Calero",
   "cancion_link": "https://youtu.be/7Jattcv4z0Y",
   "cancion_buscar": "Tobas Calero Aullagas",
@@ -234,7 +234,7 @@
   "pieza": "Historia · Ritmo",
   "texto": "",
   "colaboradores": [],
-  "estado": "espera",
+  "estado": "pendiente",
   "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
@@ -243,7 +243,7 @@
    "01.png"
   ],
   "archivo_manual": "historia-ritmo.png",
-  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py).",
   "cancion": "Tupay – Soy Caporal",
   "cancion_link": "https://youtu.be/KY0_vMk2BX0",
   "cancion_buscar": "Soy Caporal Tupay",
@@ -257,7 +257,7 @@
   "pieza": "Historia · ¡Cultura viva!",
   "texto": "",
   "colaboradores": [],
-  "estado": "espera",
+  "estado": "pendiente",
   "musica": true,
   "archivos_exploracion_rechazada": [
    "01.mp4"
@@ -266,7 +266,7 @@
    "01.png"
   ],
   "archivo_manual": "historia-cultura.png",
-  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py). En espera hasta guardar IG_PRIVADA_SESION.",
+  "nota": "Aprobada el 18-10 con su canción a las 19:00; sube desde la nube con la API privada (musica_privada.py).",
   "cancion": "Kala Marka – Ama Amazonas",
   "cancion_link": "https://youtu.be/v5eNzBUmkjM",
   "cancion_buscar": "Amazonas Kala Marka",
