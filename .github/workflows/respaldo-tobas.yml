@@ -1,0 +1,38 @@
+name: Respaldo temporizado del carrusel aprobado
+
+on:
+  workflow_dispatch:
+    inputs:
+      entorno:
+        description: Temporizador configurado en GitHub
+        type: choice
+        options:
+          - escena-prueba-temporizador
+          - escena-tobas-19oct
+        default: escena-prueba-temporizador
+      auditoria:
+        description: Revisar sin activar publicador
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  respaldo:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.entorno }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Revisar carrusel aprobado despues del temporizador
+        env:
+          GH_TOKEN: ${{ github.token }}
+          AUDITORIA: ${{ inputs.auditoria }}
+        run: python nube/respaldo_tobas.py
