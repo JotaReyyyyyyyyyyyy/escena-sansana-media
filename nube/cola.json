@@ -37,7 +37,10 @@
   "publicada": "2026-10-18 15:58",
   "links": [
    "https://www.instagram.com/stories/escena_sansana/4010842636240190267"
-  ]
+  ],
+  "cancion": "Kala Marka – Cuando florezca el chuño",
+  "cancion_link": "https://youtu.be/aBfHKjLrEGM",
+  "nota_resubida": "Canción aprobada el 18-10 para volver a subirla con sticker de música; borrar la anterior desde la app."
  },
  {
   "id": "historia-sumate",
@@ -57,7 +60,10 @@
   ],
   "archivos": [],
   "archivo_publicado": "historia-sumate.png",
-  "nota": "Publicada como imagen sin musica el 18-10; el MP4 preparado no se publico."
+  "nota": "Publicada como imagen sin musica el 18-10; el MP4 preparado no se publico.",
+  "cancion": "Llajtaymanta – El Chiru Chiru",
+  "cancion_link": "https://youtu.be/xsgnY8oCkcU",
+  "nota_resubida": "Canción aprobada el 18-10 para volver a subirla con sticker de música; borrar la anterior desde la app."
  },
  {
   "id": "carrusel-tobas-3",
@@ -98,7 +104,9 @@
   "archivos": [],
   "archivo_manual": "historia-gracias.png",
   "musica_en_app": true,
-  "nota": "PNG en publicaciones; subida manual con musica de Instagram. Fecha orientativa; no programada por API."
+  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "cancion": "Kala Marka – Rosa",
+  "cancion_link": "https://youtu.be/qtb_XOcbPxc"
  },
  {
   "id": "historia-pase",
@@ -115,7 +123,9 @@
   "archivos": [],
   "archivo_manual": "historia-pase.png",
   "musica_en_app": true,
-  "nota": "PNG en publicaciones; subida manual con musica de Instagram. Fecha orientativa; no programada por API."
+  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "cancion": "Kala Marka – El Jaguar",
+  "cancion_link": "https://youtu.be/hjofHGQVYi8"
  },
  {
   "id": "historia-felicidad",
@@ -132,7 +142,9 @@
   "archivos": [],
   "archivo_manual": "historia-felicidad.png",
   "musica_en_app": true,
-  "nota": "PNG en publicaciones; subida manual con musica de Instagram. Fecha orientativa; no programada por API."
+  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "cancion": "Luis Lambis – Ya te olvidé",
+  "cancion_link": "https://youtu.be/trDmovZuoSs"
  },
  {
   "id": "historia-lugar",
@@ -149,7 +161,9 @@
   "archivos": [],
   "archivo_manual": "historia-lugar.png",
   "musica_en_app": true,
-  "nota": "PNG en publicaciones; subida manual con musica de Instagram. Fecha orientativa; no programada por API."
+  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "cancion": "Los Hijos del Sol – Cariñito",
+  "cancion_link": "https://youtu.be/68fYR40ULPs"
  },
  {
   "id": "historia-arte",
@@ -166,7 +180,9 @@
   "archivos": [],
   "archivo_manual": "historia-arte.png",
   "musica_en_app": true,
-  "nota": "PNG en publicaciones; subida manual con musica de Instagram. Fecha orientativa; no programada por API."
+  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "cancion": "Kala Marka – Es así",
+  "cancion_link": "https://youtu.be/Hz1-ar8VZYY"
  },
  {
   "id": "historia-tesumas",
@@ -183,7 +199,9 @@
   "archivos": [],
   "archivo_manual": "historia-tesumas.png",
   "musica_en_app": true,
-  "nota": "PNG en publicaciones; subida manual con musica de Instagram. Fecha orientativa; no programada por API."
+  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "cancion": "Aullagas – Tobas Calero",
+  "cancion_link": "https://youtu.be/7Jattcv4z0Y"
  },
  {
   "id": "historia-ritmo",
@@ -200,7 +218,9 @@
   "archivos": [],
   "archivo_manual": "historia-ritmo.png",
   "musica_en_app": true,
-  "nota": "PNG en publicaciones; subida manual con musica de Instagram. Fecha orientativa; no programada por API."
+  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "cancion": "Tupay – Soy Caporal",
+  "cancion_link": "https://youtu.be/KY0_vMk2BX0"
  },
  {
   "id": "historia-cultura",
@@ -217,6 +237,8 @@
   "archivos": [],
   "archivo_manual": "historia-cultura.png",
   "musica_en_app": true,
-  "nota": "PNG en publicaciones; subida manual con musica de Instagram. Fecha orientativa; no programada por API."
+  "nota": "Canción aprobada el 18-10; la sube Joaquín con el sticker de música (la API no pone canciones en historias). Fecha orientativa.",
+  "cancion": "Kala Marka – Ama Amazonas",
+  "cancion_link": "https://youtu.be/v5eNzBUmkjM"
  }
 ]
