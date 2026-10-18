@@ -24,7 +24,7 @@ import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from flopa import actividad
+from flopa import actividad, avisar_publicacion
 
 RAIZ = Path(__file__).resolve().parent
 COLA = RAIZ / "cola.json"
@@ -113,6 +113,14 @@ def lanzar(cid):
 
 
 def publicar(p):
+    def confirmar(cid):
+        resultado = lanzar(cid)
+        if resultado.get('publicado') is True:
+            # También conservar éxitos parciales si falla otra historia del lote.
+            p.setdefault('resultados', []).append(resultado)
+            resultado['aviso_pendiente'] = not avisar_publicacion(p['tipo'], resultado)
+        return resultado
+
     urls = [RAW + f"{p['id']}/{a}" for a in p["archivos"]]
     portada = RAW + f"{p['id']}/{p['portada']}" if p.get("portada") else None
     caption, colab = p.get("texto") or None, p.get("colaboradores") or None
@@ -123,10 +131,23 @@ def publicar(p):
             extra["collaborators"] = json.dumps(colab)
         cid = api("POST", f"{UID}/media", media_type="CAROUSEL", children=",".join(hijos), **extra)["id"]
         esperar(cid, False)
-        return [lanzar(cid)]
+        return [confirmar(cid)]
     if p["tipo"] == "historia":
-        return [lanzar(contenedor(u, "historia")) for u in urls]
-    return [lanzar(contenedor(urls[0], p["tipo"], caption, portada, colab=colab))]
+        return [confirmar(contenedor(u, "historia")) for u in urls]
+    return [confirmar(contenedor(urls[0], p["tipo"], caption, portada, colab=colab))]
+
+
+def recuperar_avisos(cola):
+    if PRUEBA:
+        return
+    cambio = False
+    for p in cola:
+        for resultado in p.get('resultados', []):
+            if resultado.get('aviso_pendiente') and avisar_publicacion(p['tipo'], resultado):
+                resultado['aviso_pendiente'] = False
+                cambio = True
+    if cambio:
+        guardar(cola, 'Confirmar avisos de Flopa en Telegram')
 
 
 def guardar(cola, mensaje):
@@ -157,6 +178,7 @@ def main():
                 print(f"Pendiente: {p['id']} -> {p['hora']} America/Santiago")
         print("Auditoria: sin llamadas a Instagram ni cambios en la cola")
         return
+    recuperar_avisos(cola)
     if not os.environ.get("IG_TOKEN"):
         sys.exit("Falta el secreto IG_TOKEN; no se publico nada")
     hubo_error = False

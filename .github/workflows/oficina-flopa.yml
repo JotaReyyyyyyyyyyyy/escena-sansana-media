@@ -1,6 +1,11 @@
 name: Probar presencia de Flopa
 on:
   workflow_dispatch:
+    inputs:
+      telegram:
+        description: Enviar un aviso de prueba de Flopa a Telegram
+        type: boolean
+        default: false
 permissions:
   contents: read
 jobs:
@@ -15,6 +20,7 @@ jobs:
       - name: Comprobar la conexión con la oficina
         env:
           FLOPA_KEY: ${{ secrets.FLOPA_KEY }}
+          PROBAR_TELEGRAM: ${{ inputs.telegram }}
         run: |
           python - <<'PY'
           import sys, time, uuid
@@ -28,4 +34,18 @@ jobs:
           finally:
               assert reportar('fin', operacion, resultado='Conexión de Flopa desde la nube verificada; sin publicar en Instagram')
           print('Flopa conectada. No se llamó a Instagram.')
+          import json, os, urllib.request
+          from flopa import clave, URL
+          if os.environ.get('PROBAR_TELEGRAM', '').lower() == 'true':
+              datos = json.dumps({'tipo':'prueba','id':'prueba-' + uuid.uuid4().hex}).encode()
+              for _ in range(10):
+                  req = urllib.request.Request(URL + '/aviso', data=datos, method='POST',
+                      headers={'Content-Type':'application/json','X-Flopa':clave()})
+                  with urllib.request.urlopen(req, timeout=10) as r:
+                      resultado = json.load(r)
+                  if resultado.get('estado') == 'enviado':
+                      break
+                  time.sleep(2)
+              assert resultado.get('estado') == 'enviado', resultado.get('estado')
+              print('Aviso de prueba confirmado por Telegram; sin publicar en Instagram.')
           PY
