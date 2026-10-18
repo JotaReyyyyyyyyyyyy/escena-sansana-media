@@ -1,0 +1,49 @@
+name: Encargos privados de Flopa con Claude
+
+on:
+  schedule:
+    - cron: '7,17,27,37,47,57 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Comparte la exclusión con el publicador; una pieza aprobada se reserva en D1.
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  encargos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Comprobar si hay encargos y sesión de suscripción
+        id: sondeo
+        env:
+          FLOPA_KEY: ${{ secrets.FLOPA_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+        run: python nube/encargos.py --sondear
+      - uses: actions/setup-node@v4
+        if: steps.sondeo.outputs.trabajo == 'true'
+        with:
+          node-version: '22'
+      - name: Preparar el motor
+        if: steps.sondeo.outputs.trabajo == 'true'
+        run: |
+          npm install -g @anthropic-ai/claude-code@2.1.215
+          pip install pillow==11.3.0 playwright==1.55.0
+          python -m playwright install --with-deps chromium
+      - name: Ejecutar una etapa del encargo privado
+        if: steps.sondeo.outputs.trabajo == 'true'
+        env:
+          FLOPA_KEY: ${{ secrets.FLOPA_KEY }}
+          CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+        run: python nube/encargos.py
