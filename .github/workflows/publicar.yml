@@ -31,5 +31,6 @@ jobs:
       - name: Publicar lo que toca
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          FLOPA_KEY: ${{ secrets.FLOPA_KEY }}
           PRUEBA: ${{ inputs.prueba }}
         run: python nube/publicar.py

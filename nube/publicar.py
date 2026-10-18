@@ -24,6 +24,8 @@ import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from flopa import actividad
+
 RAIZ = Path(__file__).resolve().parent
 COLA = RAIZ / "cola.json"
 REPO = os.environ.get("GITHUB_REPOSITORY", "JotaReyyyyyyyyyyyy/escena-sansana-media")
@@ -164,7 +166,10 @@ def main():
             continue
         print(f"== {p['id']} ({p['tipo']}, {p['hora']})")
         try:
-            res = publicar(p)
+            tarea = f"{'Probando' if PRUEBA else 'Publicando'} {p['tipo']}: {p.get('pieza', p['id'])}"
+            terminado = 'Terminó una prueba sin publicar' if PRUEBA else f"Publicó {p['tipo']}: {p.get('pieza', p['id'])}"
+            with actividad(tarea, terminado):
+                res = publicar(p)
         except Exception as e:
             print(f"  ERROR: {e}")
             hubo_error = True

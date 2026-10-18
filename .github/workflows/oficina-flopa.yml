@@ -1,0 +1,31 @@
+name: Probar presencia de Flopa
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  presencia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Comprobar la conexión con la oficina
+        env:
+          FLOPA_KEY: ${{ secrets.FLOPA_KEY }}
+        run: |
+          python - <<'PY'
+          import sys, time, uuid
+          sys.path.insert(0, 'nube')
+          from flopa import reportar
+          operacion = uuid.uuid4().hex
+          assert reportar('inicio', operacion, 'Comprobando la conexión de Flopa desde la nube')
+          try:
+              time.sleep(10)
+              assert reportar('latido', operacion, 'Comprobando la conexión de Flopa desde la nube')
+          finally:
+              assert reportar('fin', operacion, resultado='Conexión de Flopa desde la nube verificada; sin publicar en Instagram')
+          print('Flopa conectada. No se llamó a Instagram.')
+          PY
