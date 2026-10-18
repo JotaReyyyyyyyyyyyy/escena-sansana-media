@@ -37,7 +37,7 @@
   "archivos": [
    "01.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  },
  {
   "id": "carrusel-tobas-3",
@@ -61,7 +61,7 @@
    "09.jpg",
    "10.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  },
  {
   "id": "historia-gracias",
@@ -73,7 +73,7 @@
   "archivos": [
    "01.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  },
  {
   "id": "historia-pase",
@@ -85,7 +85,7 @@
   "archivos": [
    "01.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  },
  {
   "id": "historia-felicidad",
@@ -97,7 +97,7 @@
   "archivos": [
    "01.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  },
  {
   "id": "historia-lugar",
@@ -109,7 +109,7 @@
   "archivos": [
    "01.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  },
  {
   "id": "historia-arte",
@@ -121,7 +121,7 @@
   "archivos": [
    "01.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  },
  {
   "id": "historia-tesumas",
@@ -133,7 +133,7 @@
   "archivos": [
    "01.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  },
  {
   "id": "historia-ritmo",
@@ -145,7 +145,7 @@
   "archivos": [
    "01.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  },
  {
   "id": "historia-cultura",
@@ -157,6 +157,6 @@
   "archivos": [
    "01.jpg"
   ],
-  "estado": "espera"
+  "estado": "pendiente"
  }
 ]
