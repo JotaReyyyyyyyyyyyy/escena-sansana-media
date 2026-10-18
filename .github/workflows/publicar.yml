@@ -1,0 +1,35 @@
+name: Publicar en Instagram
+
+# Cada 10 minutos revisa nube/cola.json y publica lo que ya toca.
+# Todo lo que esta en la cola fue aprobado por Joaquin en el chat.
+on:
+  schedule:
+    - cron: "7,17,27,37,47,57 * * * *"
+  workflow_dispatch:
+    inputs:
+      prueba:
+        description: "Armar todo en Instagram sin publicar"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publicar
+  cancel-in-progress: false
+
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Publicar lo que toca
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          PRUEBA: ${{ inputs.prueba }}
+        run: python nube/publicar.py

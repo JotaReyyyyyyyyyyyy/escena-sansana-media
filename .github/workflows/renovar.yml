@@ -1,0 +1,24 @@
+name: Renovar token de Instagram
+
+# El token dura 60 dias y cambia al renovarse. Una vez por semana se renueva y se
+# guarda cifrado como secreto IG_TOKEN. Necesita el secreto GH_PAT (permiso de
+# escritura de secretos de este repo).
+on:
+  schedule:
+    - cron: "23 14 * * 1"
+  workflow_dispatch:
+
+jobs:
+  renovar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Renovar y guardar
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
+        run: |
+          python nube/renovar.py "$RUNNER_TEMP/t"
+          echo "::add-mask::$(cat "$RUNNER_TEMP/t")"
+          gh secret set IG_TOKEN --repo "$GITHUB_REPOSITORY" < "$RUNNER_TEMP/t"
+          rm -f "$RUNNER_TEMP/t"

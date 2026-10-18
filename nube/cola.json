@@ -1,0 +1,162 @@
+[
+ {
+  "id": "prueba-nube",
+  "hora": "2026-10-18 00:00",
+  "tipo": "historia",
+  "pieza": "Prueba de la nube (nunca se publica)",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "solo-prueba"
+ },
+ {
+  "id": "historia-tobas",
+  "hora": "2026-10-16 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · Recuerdo del Jueves de Tobas",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "publicada",
+  "publicada": "2026-10-18 15:58",
+  "links": [
+   "https://www.instagram.com/stories/escena_sansana/4010842636240190267"
+  ]
+ },
+ {
+  "id": "historia-sumate",
+  "hora": "2026-10-18 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · Súmate (QR grupo WhatsApp)",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "espera"
+ },
+ {
+  "id": "carrusel-tobas-3",
+  "hora": "2026-10-19 12:00",
+  "tipo": "carrusel",
+  "pieza": "Tobas 3 · La música también bailó (colab @embrujonortino @tobaskahari)",
+  "texto": "🎺🥁 La música también bailó 🥁🎺\nLos bronces y bombos de @embrujonortino pusieron el ritmo del Jueves de Tobas, y la universidad entera se sumó a la fiesta 💚🩷\n\nGracias por tanta buena vibra. ¡Esto recién empieza! ✨\n\n#EscenaSansana #JuevesDeTobas #EmbrujoNortino #TobasKahari #MúsicaEnVivo #UTFSM #VidaUniversitaria",
+  "colaboradores": [
+   "embrujonortino",
+   "tobaskahari"
+  ],
+  "archivos": [
+   "01.jpg",
+   "02.jpg",
+   "03.jpg",
+   "04.jpg",
+   "05.jpg",
+   "06.jpg",
+   "07.jpg",
+   "08.jpg",
+   "09.jpg",
+   "10.jpg"
+  ],
+  "estado": "espera"
+ },
+ {
+  "id": "historia-gracias",
+  "hora": "2026-10-20 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · Gracias",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "espera"
+ },
+ {
+  "id": "historia-pase",
+  "hora": "2026-10-22 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · Pase al equipo (QR grupo WhatsApp)",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "espera"
+ },
+ {
+  "id": "historia-felicidad",
+  "hora": "2026-10-24 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · Felicidad",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "espera"
+ },
+ {
+  "id": "historia-lugar",
+  "hora": "2026-10-26 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · Te guardamos un lugar (QR grupo WhatsApp)",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "espera"
+ },
+ {
+  "id": "historia-arte",
+  "hora": "2026-10-28 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · Arte",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "espera"
+ },
+ {
+  "id": "historia-tesumas",
+  "hora": "2026-10-30 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · ¿Te sumas? (QR grupo WhatsApp)",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "espera"
+ },
+ {
+  "id": "historia-ritmo",
+  "hora": "2026-11-01 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · Ritmo",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "espera"
+ },
+ {
+  "id": "historia-cultura",
+  "hora": "2026-11-03 19:00",
+  "tipo": "historia",
+  "pieza": "Historia · ¡Cultura viva!",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.jpg"
+  ],
+  "estado": "espera"
+ }
+]
