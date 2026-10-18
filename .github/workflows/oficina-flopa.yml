@@ -40,7 +40,7 @@ jobs:
               datos = json.dumps({'tipo':'prueba','id':'prueba-' + uuid.uuid4().hex}).encode()
               for _ in range(10):
                   req = urllib.request.Request(URL + '/aviso', data=datos, method='POST',
-                      headers={'Content-Type':'application/json','X-Flopa':clave()})
+                      headers={'Content-Type':'application/json','X-Flopa':clave(),'User-Agent':'flopa-telegram'})
                   with urllib.request.urlopen(req, timeout=10) as r:
                       resultado = json.load(r)
                   if resultado.get('estado') == 'enviado':
