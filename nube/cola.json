@@ -12,6 +12,18 @@
   "estado": "solo-prueba"
  },
  {
+  "id": "prueba-video",
+  "hora": "2026-10-18 00:00",
+  "tipo": "historia",
+  "pieza": "Prueba de historia con video (nunca se publica)",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.mp4"
+  ],
+  "estado": "solo-prueba"
+ },
+ {
   "id": "historia-tobas",
   "hora": "2026-10-16 19:00",
   "tipo": "historia",
@@ -35,9 +47,10 @@
   "texto": "",
   "colaboradores": [],
   "archivos": [
-   "01.jpg"
+   "01.mp4"
   ],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "musica": true
  },
  {
   "id": "carrusel-tobas-3",
@@ -71,9 +84,10 @@
   "texto": "",
   "colaboradores": [],
   "archivos": [
-   "01.jpg"
+   "01.mp4"
   ],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "musica": true
  },
  {
   "id": "historia-pase",
@@ -83,9 +97,10 @@
   "texto": "",
   "colaboradores": [],
   "archivos": [
-   "01.jpg"
+   "01.mp4"
   ],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "musica": true
  },
  {
   "id": "historia-felicidad",
@@ -95,9 +110,10 @@
   "texto": "",
   "colaboradores": [],
   "archivos": [
-   "01.jpg"
+   "01.mp4"
   ],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "musica": true
  },
  {
   "id": "historia-lugar",
@@ -107,9 +123,10 @@
   "texto": "",
   "colaboradores": [],
   "archivos": [
-   "01.jpg"
+   "01.mp4"
   ],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "musica": true
  },
  {
   "id": "historia-arte",
@@ -119,9 +136,10 @@
   "texto": "",
   "colaboradores": [],
   "archivos": [
-   "01.jpg"
+   "01.mp4"
   ],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "musica": true
  },
  {
   "id": "historia-tesumas",
@@ -131,9 +149,10 @@
   "texto": "",
   "colaboradores": [],
   "archivos": [
-   "01.jpg"
+   "01.mp4"
   ],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "musica": true
  },
  {
   "id": "historia-ritmo",
@@ -143,9 +162,10 @@
   "texto": "",
   "colaboradores": [],
   "archivos": [
-   "01.jpg"
+   "01.mp4"
   ],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "musica": true
  },
  {
   "id": "historia-cultura",
@@ -155,8 +175,9 @@
   "texto": "",
   "colaboradores": [],
   "archivos": [
-   "01.jpg"
+   "01.mp4"
   ],
-  "estado": "pendiente"
+  "estado": "pendiente",
+  "musica": true
  }
 ]
