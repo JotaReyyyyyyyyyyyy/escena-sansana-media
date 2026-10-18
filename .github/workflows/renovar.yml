@@ -36,7 +36,15 @@ jobs:
             exit 1
           fi
           trap 'rm -f "$RUNNER_TEMP/t"' EXIT
-          python nube/renovar.py "$RUNNER_TEMP/t"
+          umask 077
+          python nube/renovar.py "$RUNNER_TEMP/t" "$RUNNER_TEMP/renovacion.json"
           echo "::add-mask::$(cat "$RUNNER_TEMP/t")"
           gh secret set IG_TOKEN --repo "$GITHUB_REPOSITORY" < "$RUNNER_TEMP/t"
           rm -f "$RUNNER_TEMP/t"
+          echo "Renovacion guardada correctamente en el secreto IG_TOKEN."
+      - name: Guardar evidencia sin credenciales
+        uses: actions/upload-artifact@v4
+        with:
+          name: renovacion-${{ github.run_id }}
+          path: ${{ runner.temp }}/renovacion.json
+          retention-days: 90
