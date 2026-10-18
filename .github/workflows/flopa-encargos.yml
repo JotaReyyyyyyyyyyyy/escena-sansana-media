@@ -13,9 +13,9 @@ on:
 permissions:
   contents: read
 
-# Comparte la exclusión con el publicador; una pieza aprobada se reserva en D1.
+# Cola independiente; no desplaza el calendario ya aprobado. D1 reserva cada encargo.
 concurrency:
-  group: publicar
+  group: flopa-encargos
   cancel-in-progress: false
 
 jobs:
