@@ -49,8 +49,12 @@
   "archivos": [
    "01.mp4"
   ],
-  "estado": "manual",
-  "musica": true
+  "estado": "publicada",
+  "musica": true,
+  "publicada": "2026-10-18",
+  "links": [
+   "https://www.instagram.com/stories/escena_sansana/4010884562108232007"
+  ]
  },
  {
   "id": "carrusel-tobas-3",
