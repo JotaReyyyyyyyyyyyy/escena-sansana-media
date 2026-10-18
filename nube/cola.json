@@ -24,6 +24,21 @@
   "estado": "solo-prueba"
  },
  {
+  "id": "prueba-musica",
+  "hora": "2026-10-18 00:00",
+  "tipo": "historia-musica",
+  "pieza": "Prueba de historia con canción (nunca se publica)",
+  "texto": "",
+  "colaboradores": [],
+  "archivos": [
+   "01.png"
+  ],
+  "cancion_buscar": "Rosa Kala Marka",
+  "cancion_artista": "kala marka",
+  "cancion_titulo": "rosa",
+  "estado": "solo-prueba"
+ },
+ {
   "id": "historia-tobas",
   "hora": "2026-10-16 19:00",
   "tipo": "historia",
