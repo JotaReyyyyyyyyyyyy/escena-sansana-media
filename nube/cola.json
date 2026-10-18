@@ -289,7 +289,8 @@
   "cancion_buscar": "El Chiru Chiru Llajtaymanta",
   "cancion_artista": "llajtaymanta",
   "cancion_titulo": "chiru",
-  "estado": "pendiente",
-  "nota": "Reemplaza la Súmate sin música (Joaquín la borró el 18-10). Primera prueba desde la nube."
+  "estado": "publicando",
+  "nota": "Reemplaza la Súmate sin música (Joaquín la borró el 18-10). Primera prueba desde la nube.",
+  "inicio": "2026-10-18T20:05:29.315316-03:00"
  }
 ]
