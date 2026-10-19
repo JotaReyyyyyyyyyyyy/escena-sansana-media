@@ -128,9 +128,8 @@ def publicar(p):
         return anotar(lanzar(cid))
 
     if p["tipo"] == "historia-musica":
-        # Historia con canción del catálogo: va por la API privada (nube/musica_privada.py).
-        from musica_privada import publicar_historia
-        return [anotar(publicar_historia(p, RAIZ / "media" / p["id"] / a, PRUEBA)) for a in p["archivos"]]
+        # La API privada se retiró por riesgo de shadowban: solo se publica por la oficial.
+        raise RuntimeError("historia-musica ya no se publica; usa tipo historia sin canción")
 
     urls = [RAW + f"{p['id']}/{a}" for a in p["archivos"]]
     portada = RAW + f"{p['id']}/{p['portada']}" if p.get("portada") else None

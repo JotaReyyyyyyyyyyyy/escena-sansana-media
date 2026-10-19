@@ -89,21 +89,22 @@ class PublicacionSegura(unittest.TestCase):
                 self.run_main(self.now + dt.timedelta(minutes=1), publish, save)
             publish.assert_not_called()
 
-    def test_historia_musica_va_por_api_privada_y_avisa_como_historia(self):
-        import musica_privada
-        p = {"id": "h", "tipo": "historia-musica", "archivos": ["01.png"], "cancion_buscar": "x"}
-        rutas, avisos = [], []
-        def privada(pieza, png, prueba=False):
-            rutas.append(Path(png).relative_to(motor.RAIZ).as_posix())
-            return {"id": "123", "link": "https://example.test/h", "publicado": True}
-        with patch.object(musica_privada, "publicar_historia", privada), \
-             patch.object(motor, "avisar_publicacion", lambda tipo, r: avisos.append(tipo) or True), \
-             patch.object(motor, "api") as api:
-            res = motor.publicar(p)
+    def test_historia_musica_ya_no_llama_a_ninguna_api(self):
+        p = {"id": "h", "tipo": "historia-musica", "archivos": ["01.png"]}
+        with patch.object(motor, "api") as api:
+            with self.assertRaisesRegex(RuntimeError, "ya no se publica"):
+                motor.publicar(p)
             api.assert_not_called()
-        self.assertEqual(rutas, ["media/h/01.png"])
-        self.assertEqual(avisos, ["historia"])
-        self.assertEqual(res[0]["id"], "123")
+
+    def test_cola_sin_historias_con_cancion_pendientes(self):
+        cola = json.loads(motor.COLA.read_text(encoding="utf-8"))
+        activas = [p["id"] for p in cola if p["tipo"] == "historia-musica" and p["estado"] in ("pendiente", "solo-prueba")]
+        self.assertEqual(activas, [])
+        for p in cola:
+            if p["tipo"] == "historia" and p["estado"] == "pendiente":
+                for a in p["archivos"]:
+                    self.assertTrue(a.endswith(".jpg"), p["id"])
+                    self.assertTrue((motor.RAIZ / "media" / p["id"] / a).is_file(), p["id"])
 
     def test_auditoria_sin_publicar_ni_modificar(self):
         self.write()
