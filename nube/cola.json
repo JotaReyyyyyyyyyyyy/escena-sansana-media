@@ -103,8 +103,10 @@
    "09.jpg",
    "10.jpg"
   ],
-  "estado": "publicando",
-  "inicio": "2026-10-19T12:05:27.734395-03:00"
+  "estado": "revision",
+  "inicio": "2026-10-19T12:05:27.734395-03:00",
+  "intentos": 1,
+  "nota": "Instagram 400 (codigo 190): Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
  },
  {
   "id": "historia-gracias",
