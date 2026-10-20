@@ -115,12 +115,13 @@
   "pieza": "Historia · Gracias",
   "texto": "",
   "colaboradores": [],
-  "estado": "pendiente",
+  "estado": "publicando",
   "archivos": [
    "01.jpg"
   ],
   "archivo_manual": "historia-gracias.png",
-  "nota": "Historia normal sin canción por la API oficial (19-10: se retiró la API privada para evitar shadowban)."
+  "nota": "Historia normal sin canción por la API oficial (19-10: se retiró la API privada para evitar shadowban).",
+  "inicio": "2026-10-20T20:14:07.900044-03:00"
  },
  {
   "id": "historia-pase",
