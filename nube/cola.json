@@ -121,19 +121,17 @@
  },
  {
   "id": "historia-gracias",
-  "hora": "2026-10-20 19:00",
+  "hora": "2026-10-22 11:34",
   "tipo": "historia",
   "pieza": "Historia · Gracias",
   "texto": "",
   "colaboradores": [],
-  "estado": "cancelada",
+  "estado": "pendiente",
   "archivos": [
    "01.jpg"
   ],
   "archivo_manual": "historia-gracias.png",
-  "nota": "Joaquin la descarto el 22-10. No salio: el 20-10 Instagram rechazo la llave anulada (error 190).",
-  "inicio": "2026-10-20T20:14:07.900044-03:00",
-  "intentos": 1
+  "nota": "Joaquin la descarto y luego la pidio de nuevo para publicar ahora (22-10). El 20-10 no salio: llave anulada (error 190)."
  },
  {
   "id": "historia-pase",
