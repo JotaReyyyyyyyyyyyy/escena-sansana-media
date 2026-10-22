@@ -83,7 +83,7 @@
  },
  {
   "id": "carrusel-tobas-3",
-  "hora": "2026-10-19 12:00",
+  "hora": "2026-10-22 11:19",
   "tipo": "carrusel",
   "pieza": "Tobas 3 · La música también bailó (colab @embrujonortino @tobaskahari)",
   "texto": "🎺🥁 La música también bailó 🥁🎺\nLos bronces y bombos de @embrujonortino pusieron el ritmo del Jueves de Tobas, y la universidad entera se sumó a la fiesta 💚🩷\n\nGracias por tanta buena vibra. ¡Esto recién empieza! ✨\n\n#EscenaSansana #JuevesDeTobas #EmbrujoNortino #TobasKahari #MúsicaEnVivo #UTFSM #VidaUniversitaria",
@@ -103,10 +103,8 @@
    "09.jpg",
    "10.jpg"
   ],
-  "estado": "revision",
-  "inicio": "2026-10-19T12:05:27.734395-03:00",
-  "intentos": 1,
-  "nota": "Instagram 400 (codigo 190): Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons."
+  "estado": "pendiente",
+  "nota": "Reprogramado el 22-10 con llave nueva. El 19-10 no salio: Instagram rechazo la llave anulada (error 190); verificado en la cuenta."
  },
  {
   "id": "historia-gracias",
@@ -115,18 +113,18 @@
   "pieza": "Historia · Gracias",
   "texto": "",
   "colaboradores": [],
-  "estado": "revision",
+  "estado": "cancelada",
   "archivos": [
    "01.jpg"
   ],
   "archivo_manual": "historia-gracias.png",
-  "nota": "Instagram 400 (codigo 190): Error validating access token: The session has been invalidated because the user changed their password or Facebook has changed the session for security reasons.",
+  "nota": "Joaquin la descarto el 22-10. No salio: el 20-10 Instagram rechazo la llave anulada (error 190).",
   "inicio": "2026-10-20T20:14:07.900044-03:00",
   "intentos": 1
  },
  {
   "id": "historia-pase",
-  "hora": "2026-10-22 19:00",
+  "hora": "2026-10-23 19:00",
   "tipo": "historia",
   "pieza": "Historia · Pase al equipo (QR grupo WhatsApp)",
   "texto": "",
@@ -136,11 +134,11 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-pase.png",
-  "nota": "Historia normal sin canción por la API oficial (19-10: se retiró la API privada para evitar shadowban)."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
  },
  {
   "id": "historia-felicidad",
-  "hora": "2026-10-24 19:00",
+  "hora": "2026-10-25 19:00",
   "tipo": "historia",
   "pieza": "Historia · Felicidad",
   "texto": "",
@@ -150,11 +148,11 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-felicidad.png",
-  "nota": "Historia normal sin canción por la API oficial (19-10: se retiró la API privada para evitar shadowban)."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
  },
  {
   "id": "historia-lugar",
-  "hora": "2026-10-26 19:00",
+  "hora": "2026-10-27 19:00",
   "tipo": "historia",
   "pieza": "Historia · Te guardamos un lugar (QR grupo WhatsApp)",
   "texto": "",
@@ -164,11 +162,11 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-lugar.png",
-  "nota": "Historia normal sin canción por la API oficial (19-10: se retiró la API privada para evitar shadowban)."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
  },
  {
   "id": "historia-arte",
-  "hora": "2026-10-28 19:00",
+  "hora": "2026-10-29 19:00",
   "tipo": "historia",
   "pieza": "Historia · Arte",
   "texto": "",
@@ -178,11 +176,11 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-arte.png",
-  "nota": "Historia normal sin canción por la API oficial (19-10: se retiró la API privada para evitar shadowban)."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
  },
  {
   "id": "historia-tesumas",
-  "hora": "2026-10-30 19:00",
+  "hora": "2026-10-31 19:00",
   "tipo": "historia",
   "pieza": "Historia · ¿Te sumas? (QR grupo WhatsApp)",
   "texto": "",
@@ -192,11 +190,11 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-tesumas.png",
-  "nota": "Historia normal sin canción por la API oficial (19-10: se retiró la API privada para evitar shadowban)."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
  },
  {
   "id": "historia-ritmo",
-  "hora": "2026-11-01 19:00",
+  "hora": "2026-11-02 19:00",
   "tipo": "historia",
   "pieza": "Historia · Ritmo",
   "texto": "",
@@ -206,11 +204,11 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-ritmo.png",
-  "nota": "Historia normal sin canción por la API oficial (19-10: se retiró la API privada para evitar shadowban)."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
  },
  {
   "id": "historia-cultura",
-  "hora": "2026-11-03 19:00",
+  "hora": "2026-11-04 19:00",
   "tipo": "historia",
   "pieza": "Historia · ¡Cultura viva!",
   "texto": "",
@@ -220,7 +218,7 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-cultura.png",
-  "nota": "Historia normal sin canción por la API oficial (19-10: se retiró la API privada para evitar shadowban)."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
  },
  {
   "id": "historia-sumate-musica",
