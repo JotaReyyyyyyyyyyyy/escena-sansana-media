@@ -103,9 +103,21 @@
    "09.jpg",
    "10.jpg"
   ],
-  "estado": "publicando",
+  "estado": "publicada",
   "nota": "Reprogramado el 22-10 con llave nueva. El 19-10 no salio: Instagram rechazo la llave anulada (error 190); verificado en la cuenta.",
-  "inicio": "2026-10-22T11:20:13.899651-03:00"
+  "inicio": "2026-10-22T11:20:13.899651-03:00",
+  "resultados": [
+   {
+    "id": "17940741573367992",
+    "link": "https://www.instagram.com/p/DezL5Lkm-qr/",
+    "publicado": true,
+    "aviso_pendiente": false
+   }
+  ],
+  "publicada": "2026-10-22 11:21",
+  "links": [
+   "https://www.instagram.com/p/DezL5Lkm-qr/"
+  ]
  },
  {
   "id": "historia-gracias",
