@@ -126,13 +126,25 @@
   "pieza": "Historia · Gracias",
   "texto": "",
   "colaboradores": [],
-  "estado": "publicando",
+  "estado": "publicada",
   "archivos": [
    "01.jpg"
   ],
   "archivo_manual": "historia-gracias.png",
   "nota": "Joaquin la descarto y luego la pidio de nuevo para publicar ahora (22-10). El 20-10 no salio: llave anulada (error 190).",
-  "inicio": "2026-10-22T11:34:33.842449-03:00"
+  "inicio": "2026-10-22T11:34:33.842449-03:00",
+  "resultados": [
+   {
+    "id": "18126170807309302",
+    "link": "https://www.instagram.com/stories/escena_sansana/4013610487086670614",
+    "publicado": true,
+    "aviso_pendiente": false
+   }
+  ],
+  "publicada": "2026-10-22 11:34",
+  "links": [
+   "https://www.instagram.com/stories/escena_sansana/4013610487086670614"
+  ]
  },
  {
   "id": "historia-pase",
