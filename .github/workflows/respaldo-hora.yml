@@ -1,0 +1,44 @@
+name: Respaldo temporizado de una pieza aprobada
+
+# GitHub atrasa el cron de publicar.yml hasta varias horas. Cada pieza programada
+# tiene su entorno escena-<pieza> con un temporizador que vence a su hora; al vencer,
+# relee la cola de main y activa publicar.yml solo si esa pieza sigue pendiente.
+on:
+  workflow_dispatch:
+    inputs:
+      pieza:
+        description: id de la pieza en nube/cola.json
+        type: string
+        required: true
+      hora:
+        description: Hora aprobada (AAAA-MM-DD HH:MM, America/Santiago)
+        type: string
+        required: true
+      auditoria:
+        description: Revisar sin activar publicador
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  respaldo:
+    runs-on: ubuntu-latest
+    environment: escena-${{ inputs.pieza }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Revisar la pieza despues del temporizador
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PIEZA: ${{ inputs.pieza }}
+          HORA: ${{ inputs.hora }}
+          AUDITORIA: ${{ inputs.auditoria }}
+        run: python nube/respaldo_hora.py
