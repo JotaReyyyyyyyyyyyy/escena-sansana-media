@@ -153,13 +153,25 @@
   "pieza": "Historia · Pase al equipo (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
-  "estado": "publicando",
+  "estado": "publicada",
   "archivos": [
    "01.jpg"
   ],
   "archivo_manual": "historia-pase.png",
   "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
-  "inicio": "2026-10-23T19:03:14.404644-03:00"
+  "inicio": "2026-10-23T19:03:14.404644-03:00",
+  "resultados": [
+   {
+    "id": "18106625297360538",
+    "link": "https://www.instagram.com/stories/escena_sansana/4014561098413844271",
+    "publicado": true,
+    "aviso_pendiente": false
+   }
+  ],
+  "publicada": "2026-10-23 19:03",
+  "links": [
+   "https://www.instagram.com/stories/escena_sansana/4014561098413844271"
+  ]
  },
  {
   "id": "historia-felicidad",
