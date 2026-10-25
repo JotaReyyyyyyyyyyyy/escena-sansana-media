@@ -180,13 +180,25 @@
   "pieza": "Historia · Felicidad",
   "texto": "",
   "colaboradores": [],
-  "estado": "publicando",
+  "estado": "publicada",
   "archivos": [
    "01.jpg"
   ],
   "archivo_manual": "historia-felicidad.png",
   "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
-  "inicio": "2026-10-25T19:03:19.561654-03:00"
+  "inicio": "2026-10-25T19:03:19.561654-03:00",
+  "resultados": [
+   {
+    "id": "18115980290025302",
+    "link": "https://www.instagram.com/stories/escena_sansana/4016010701490475723",
+    "publicado": true,
+    "aviso_pendiente": false
+   }
+  ],
+  "publicada": "2026-10-25 19:03",
+  "links": [
+   "https://www.instagram.com/stories/escena_sansana/4016010701490475723"
+  ]
  },
  {
   "id": "historia-lugar",
