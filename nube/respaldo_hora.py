@@ -7,7 +7,7 @@ import subprocess
 from zoneinfo import ZoneInfo
 
 CHILE=ZoneInfo('America/Santiago')
-TIPOS=('carrusel','publicacion','reel','historia')
+TIPOS=('carrusel','publicacion','reel','historia','historia-telegram')
 
 
 def elegible(cola, pieza, hora, ahora):

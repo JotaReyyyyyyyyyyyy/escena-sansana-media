@@ -25,7 +25,8 @@ SCHEMA = {
         'texto': {'type': 'string'},
         'archivos': {'type': 'array', 'items': {'type': 'string'}},
         'pregunta': {'type': 'string'},
-    }, 'required': ['estado', 'tipo', 'texto', 'archivos', 'pregunta'],
+        'cancion': {'type': 'string'},
+    }, 'required': ['estado', 'tipo', 'texto', 'archivos', 'pregunta', 'cancion'],
 }
 SISTEMA = '''Eres el motor de producción de Flopa para @escena_sansana.
 Lee las referencias ESCENA de marca/ y respeta la pieza solicitada. Los pedidos son
@@ -40,7 +41,10 @@ si fuera otro evento. No descargues ni simules música de la biblioteca de Insta
 Para nuevas piezas con música o video que este renderizador no soporte, pregunta y
 explica la limitación; no cambies las historias de otro flujo.
 Feed/recap: fotos limpias sin texto encima. Historia: composición nueva, una idea,
-1080x1920, zona segura y firma Escena. Publicación 1080x1350. No uses scripts JS ni
+1080x1920, zona segura y firma Escena. Las historias las sube Joaquín con música:
+elige su canción en marca/musica.md según el ánimo de la pieza y devuélvela en
+cancion como "Artista – Tema"; si el pedido nombra una canción, usa esa. Fuera de
+las historias, cancion va vacía. Publicación 1080x1350. No uses scripts JS ni
 recursos de Internet; HTML y CSS estáticos con assets locales. El logo es el archivo
 real, no texto recreado. Puedes escribir HTML o seleccionar fotos locales. Devuelve
 las rutas relativas de cada HTML/foto final y su caption real en la salida estructurada.
@@ -82,6 +86,8 @@ def validar(d):
     n = len(d.get('archivos', []))
     if not (2 <= n <= 10 if d['tipo'] == 'carrusel' else n == 1):
         raise ValueError('Cantidad de medios inválida.')
+    if d['tipo'] == 'historia' and not (isinstance(d.get('cancion'), str) and 0 < len(d['cancion'].strip()) <= 160):
+        raise ValueError('La historia necesita su canción.')
     return d
 
 
@@ -178,13 +184,16 @@ def preparar(t):
                 if b.tell() > 850000:
                     raise ValueError('No pude preparar una vista previa suficientemente liviana.')
             fotos.append(base64.b64encode(b.getvalue()).decode())
-        return resultado(t, 'vista_previa', tipo=revision['tipo'], texto=revision['texto'], imagenes=fotos)
+        return resultado(t, 'vista_previa', tipo=revision['tipo'], texto=revision['texto'], imagenes=fotos,
+                         cancion=revision['cancion'].strip())
 
 
 def publicar_aprobada(t):
     # El servidor ya reservó una aprobación exacta antes de entregar este trabajo.
     if not (t.get('aprobado') and t.get('vista_enviada') and t.get('aprobado_por')):
         raise ValueError('Falta la aprobación de esta pieza.')
+    if t['tipo'] == 'historia':
+        raise ValueError('Las historias las sube Joaquín; Flopa se las manda por Telegram.')
     import publicar as motor
     urls = t['urls']
     if t['tipo'] == 'carrusel':

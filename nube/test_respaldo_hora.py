@@ -13,6 +13,10 @@ class RespaldoHoraSeguro(unittest.TestCase):
         self.assertFalse(elegible([self.p],'historia-pase','2026-10-23 19:00',HORA-dt.timedelta(seconds=1)))
         self.assertTrue(elegible([self.p],'historia-pase','2026-10-23 19:00',HORA))
 
+    def test_historia_por_telegram_activa_el_envio_a_su_hora(self):
+        p={**self.p,'tipo':'historia-telegram'}
+        self.assertTrue(elegible([p],'historia-pase','2026-10-23 19:00',HORA))
+
     def test_solo_pendiente_aprobada(self):
         for state in ['manual','publicando','revision','publicada','error','solo-prueba','cancelada']:
             self.assertFalse(elegible([{**self.p,'estado':state}],'historia-pase','2026-10-23 19:00',HORA))

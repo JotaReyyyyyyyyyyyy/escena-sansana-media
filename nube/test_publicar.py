@@ -96,15 +96,56 @@ class PublicacionSegura(unittest.TestCase):
                 motor.publicar(p)
             api.assert_not_called()
 
-    def test_cola_sin_historias_con_cancion_pendientes(self):
+    def test_historias_pendientes_van_por_telegram_con_su_cancion(self):
+        # Desde el 26-10 Joaquín sube las historias; este paso corre antes de publicar.
         cola = json.loads(motor.COLA.read_text(encoding="utf-8"))
-        activas = [p["id"] for p in cola if p["tipo"] == "historia-musica" and p["estado"] in ("pendiente", "solo-prueba")]
+        activas = [p["id"] for p in cola if (p["tipo"] == "historia-musica" and p["estado"] in ("pendiente", "solo-prueba"))
+                   or (p["tipo"] == "historia" and p["estado"] == "pendiente")]
         self.assertEqual(activas, [])
         for p in cola:
-            if p["tipo"] == "historia" and p["estado"] == "pendiente":
+            if p["tipo"] == "historia-telegram" and p["estado"] == "pendiente":
+                self.assertTrue(p["cancion"].strip(), p["id"])
                 for a in p["archivos"]:
-                    self.assertTrue(a.endswith(".jpg"), p["id"])
                     self.assertTrue((motor.RAIZ / "media" / p["id"] / a).is_file(), p["id"])
+
+    def entrega(self, respuestas):
+        self.items.append({"id": "historia-x", "estado": "pendiente", "hora": "2026-10-19 12:00",
+                           "tipo": "historia-telegram", "pieza": "Historia X", "archivos": ["01.jpg"],
+                           "cancion": "Kala Marka – Rosa"})
+        self.write()
+        llamadas = []
+        def entregar(p):
+            llamadas.append(p["id"])
+            r = respuestas.pop(0)
+            if isinstance(r, Exception):
+                raise r
+            return r
+        return llamadas, entregar
+
+    def test_historia_telegram_se_entrega_una_vez_sin_tocar_instagram(self):
+        llamadas, entregar = self.entrega(["enviada"])
+        moment = self.now + dt.timedelta(minutes=1)
+        publish = lambda p: [{"id": "media-id", "link": None, "publicado": True}]
+        with patch.object(motor, "entregar", entregar), patch.object(motor, "api") as api:
+            for _ in range(2):
+                with self.assertRaisesRegex(SystemExit, "0"):
+                    self.run_main(moment, publish)
+            api.assert_not_called()
+        self.assertEqual(llamadas, ["historia-x"])
+        self.assertEqual(json.loads(self.cola.read_text())[2]["estado"], "entregada")
+
+    def test_historia_telegram_reintenta_si_no_llego_y_revisa_si_es_incierta(self):
+        llamadas, entregar = self.entrega([RuntimeError("sin red"), "pendiente", "incierta"])
+        moment = self.now + dt.timedelta(minutes=1)
+        publish = lambda p: [{"id": "media-id", "link": None, "publicado": True}]
+        with patch.object(motor, "entregar", entregar):
+            for salida in ("1", "0", "1"):
+                with self.assertRaisesRegex(SystemExit, salida):
+                    self.run_main(moment, publish)
+                if salida == "1" and len(llamadas) == 1:
+                    self.assertEqual(json.loads(self.cola.read_text())[2]["estado"], "pendiente")
+        self.assertEqual(llamadas, ["historia-x"] * 3)
+        self.assertEqual(json.loads(self.cola.read_text())[2]["estado"], "revision")
 
     def test_auditoria_sin_publicar_ni_modificar(self):
         self.write()

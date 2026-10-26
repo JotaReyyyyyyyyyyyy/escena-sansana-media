@@ -8,6 +8,9 @@ Cada pieza de la cola ya fue aprobada por Joaquin en el chat antes de entrar aqu
     IG_TOKEN=... python nube/publicar.py            publica lo vencido
     IG_TOKEN=... PRUEBA=true python nube/publicar.py  arma todo sin publicar
 
+Las historias no van a Instagram por aqui: las sube Joaquin desde la app con su cancion.
+A su hora (tipo historia-telegram), Flopa le manda el archivo y la cancion por Telegram.
+
 Las fotos y videos viven en nube/media/<id>/ de este repo publico: Instagram los
 descarga desde raw.githubusercontent.com. Despues de publicar, el estado se guarda en
 la cola con un commit al tiro, para que la siguiente corrida no la repita.
@@ -24,7 +27,7 @@ import urllib.request
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
-from flopa import actividad, avisar_publicacion
+from flopa import actividad, avisar_publicacion, clave
 
 RAIZ = Path(__file__).resolve().parent
 COLA = RAIZ / "cola.json"
@@ -37,6 +40,7 @@ CHILE = ZoneInfo("America/Santiago")
 VENCE = dt.timedelta(hours=36)  # mas atrasada que esto no se publica (se marca vencida)
 LIMITE = {4, 17, 32, 613}
 PRUEBA = os.environ.get("PRUEBA", "").lower() == "true"
+ENTREGA = "https://pablojuan-bot.joagivg-tapiens.workers.dev/oficina/api/flopa/entrega"
 
 
 def api(metodo, ruta, **params):
@@ -147,6 +151,21 @@ def publicar(p):
     return [confirmar(contenedor(urls[0], p["tipo"], caption, portada, colab=colab))]
 
 
+def entregar(p):
+    """Las historias las sube Joaquin: Flopa le manda el archivo y la cancion por Telegram.
+    El Worker no repite una entrega ya hecha, asi que reintentar es seguro."""
+    llave = clave()
+    if not llave:
+        raise RuntimeError("Falta FLOPA_KEY; no se pudo mandar la historia a Telegram")
+    datos = {"id": p["id"], "hora": p["hora"], "cancion": p["cancion"], "link": p.get("link"),
+             "archivos": [RAW + f"{p['id']}/{a}" for a in p["archivos"]]}
+    req = urllib.request.Request(ENTREGA, data=json.dumps(datos).encode(), method="POST",
+                                 headers={"Content-Type": "application/json", "X-Flopa": llave,
+                                          "User-Agent": "flopa-entregas"})
+    with urllib.request.urlopen(req, timeout=90) as r:
+        return json.load(r).get("estado")
+
+
 def recuperar_avisos(cola):
     if PRUEBA:
         return
@@ -205,6 +224,29 @@ def main():
             guardar(cola, f"Vencida: {p['id']}")
             continue
         print(f"== {p['id']} ({p['tipo']}, {p['hora']})")
+        if p["tipo"] == "historia-telegram":
+            if PRUEBA:
+                print("  Prueba: no se manda a Telegram")
+                continue
+            try:
+                with actividad(f"Mandando a Joaquín la historia {p.get('pieza', p['id'])}",
+                               "Le mandó una historia a Joaquín por Telegram"):
+                    estado = entregar(p)
+            except Exception as e:
+                print(f"  ERROR al mandar a Telegram (se reintenta en la próxima revisión): {e}")
+                hubo_error = True
+                continue
+            if estado == "enviada":
+                p["estado"] = "entregada"
+                p["entregada"] = f"{dt.datetime.now(CHILE):%Y-%m-%d %H:%M}"
+                guardar(cola, f"Entregada a Joaquín: {p['id']}")
+            elif estado == "pendiente":
+                print("  Telegram pidió esperar; se reintenta en la próxima revisión")
+            else:
+                p["estado"], p["nota"] = "revision", f"Telegram: {estado}; confirmar con Joaquín si le llegó"
+                guardar(cola, f"Revisar entrega de {p['id']}")
+                hubo_error = True
+            continue
         if not PRUEBA:
             # Reserva durable ANTES de llamar a Instagram. Una interrupcion deja
             # publicando/revision fuera de los reintentos, nunca otra publicacion.

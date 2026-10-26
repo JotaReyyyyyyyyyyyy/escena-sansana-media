@@ -203,7 +203,7 @@
  {
   "id": "historia-lugar",
   "hora": "2026-10-27 19:00",
-  "tipo": "historia",
+  "tipo": "historia-telegram",
   "pieza": "Historia · Te guardamos un lugar (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
@@ -212,12 +212,14 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-lugar.png",
-  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
+  "cancion": "Los Hijos del Sol – Cariñito",
+  "link": "https://youtu.be/68fYR40ULPs"
  },
  {
   "id": "historia-arte",
   "hora": "2026-10-29 19:00",
-  "tipo": "historia",
+  "tipo": "historia-telegram",
   "pieza": "Historia · Arte",
   "texto": "",
   "colaboradores": [],
@@ -226,12 +228,14 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-arte.png",
-  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
+  "cancion": "Kala Marka – Es así",
+  "link": "https://youtu.be/Hz1-ar8VZYY"
  },
  {
   "id": "historia-tesumas",
   "hora": "2026-10-31 19:00",
-  "tipo": "historia",
+  "tipo": "historia-telegram",
   "pieza": "Historia · ¿Te sumas? (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
@@ -240,12 +244,14 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-tesumas.png",
-  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
+  "cancion": "Aullagas – Tobas Calero",
+  "link": "https://youtu.be/7Jattcv4z0Y"
  },
  {
   "id": "historia-ritmo",
   "hora": "2026-11-02 19:00",
-  "tipo": "historia",
+  "tipo": "historia-telegram",
   "pieza": "Historia · Ritmo",
   "texto": "",
   "colaboradores": [],
@@ -254,12 +260,14 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-ritmo.png",
-  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
+  "cancion": "Tupay – Soy Caporal",
+  "link": "https://youtu.be/KY0_vMk2BX0"
  },
  {
   "id": "historia-cultura",
   "hora": "2026-11-04 19:00",
-  "tipo": "historia",
+  "tipo": "historia-telegram",
   "pieza": "Historia · ¡Cultura viva!",
   "texto": "",
   "colaboradores": [],
@@ -268,7 +276,9 @@
    "01.jpg"
   ],
   "archivo_manual": "historia-cultura.png",
-  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave."
+  "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
+  "cancion": "Kala Marka – Ama Amazonas",
+  "link": "https://youtu.be/v5eNzBUmkjM"
  },
  {
   "id": "historia-sumate-musica",
