@@ -207,14 +207,15 @@
   "pieza": "Historia · Te guardamos un lugar (QR grupo WhatsApp)",
   "texto": "",
   "colaboradores": [],
-  "estado": "pendiente",
+  "estado": "entregada",
   "archivos": [
    "01.jpg"
   ],
   "archivo_manual": "historia-lugar.png",
   "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
   "cancion": "Los Hijos del Sol – Cariñito",
-  "link": "https://youtu.be/68fYR40ULPs"
+  "link": "https://youtu.be/68fYR40ULPs",
+  "entregada": "2026-10-27 19:03"
  },
  {
   "id": "historia-arte",
