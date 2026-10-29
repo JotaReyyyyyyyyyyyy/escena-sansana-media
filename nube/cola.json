@@ -224,14 +224,15 @@
   "pieza": "Historia · Arte",
   "texto": "",
   "colaboradores": [],
-  "estado": "pendiente",
+  "estado": "entregada",
   "archivos": [
    "01.jpg"
   ],
   "archivo_manual": "historia-arte.png",
   "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
   "cancion": "Kala Marka – Es así",
-  "link": "https://youtu.be/Hz1-ar8VZYY"
+  "link": "https://youtu.be/Hz1-ar8VZYY",
+  "entregada": "2026-10-29 19:02"
  },
  {
   "id": "historia-tesumas",
