@@ -258,14 +258,15 @@
   "pieza": "Historia · Ritmo",
   "texto": "",
   "colaboradores": [],
-  "estado": "pendiente",
+  "estado": "entregada",
   "archivos": [
    "01.jpg"
   ],
   "archivo_manual": "historia-ritmo.png",
   "nota": "Historia normal sin cancion por la API oficial. Reprogramada el 22-10 tras renovar la llave.",
   "cancion": "Tupay – Soy Caporal",
-  "link": "https://youtu.be/KY0_vMk2BX0"
+  "link": "https://youtu.be/KY0_vMk2BX0",
+  "entregada": "2026-11-02 19:02"
  },
  {
   "id": "historia-cultura",
